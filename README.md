@@ -141,6 +141,6 @@ python run_gui_v4.py
 | 中文乱码 | 系统需支持中文编码，终端运行 chcp 65001 |
 
 ## Demo
-<img src="assets/hrg_demo.gif" alt="HRG上位机演示：点云导入、3D模型比对、几何参数计算、质量评分输出" width="650"/>
+<img src="assets/hrg_demo.png" alt="HRG上位机演示：点云导入、3D模型比对、几何参数计算、质量评分输出" width="650"/>
 
 > 演示内容：实测点云与STL振子模型配准，2D剖面偏差可视化，齿状结构参数求解，自动生成综合质量评分。
