@@ -139,3 +139,5 @@ python run_gui_v4.py
 | 内存不足 | 减少降采样点数，关闭其他程序 |
 | 导出 Word 失败 | 确认 python-docx>=0.8.11 已安装 |
 | 中文乱码 | 系统需支持中文编码，终端运行 chcp 65001 |
+
+![HRG谐振陀螺上位机演示：VTK点云可视化+质量分析](assets/hrg_demo.gif)
