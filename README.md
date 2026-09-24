@@ -1,0 +1,2 @@
+# HRG_Precision_Analyzer
+HRG谐振陀螺加工精度分析系统上位机软件，实现谐振子自动化检测与质量评价
