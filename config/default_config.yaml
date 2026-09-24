@@ -1,0 +1,190 @@
+# HRG谐振陀螺加工精度分析系统 - 默认配置文件
+# 版本: v4.0
+# 创建日期: 2025-01-22
+
+# ==================== 表面粗糙度分析配置 ====================
+roughness:
+  # 采样长度 (mm)
+  sampling_length: 0.8
+  
+  # 评定长度 (mm)，通常为采样长度的5倍
+  evaluation_length: 4.0
+  
+  # 高斯滤波截止波长 (mm)
+  cutoff_wavelength: 0.8
+  
+  # 轮廓提取方向
+  extraction_directions:
+    - "radial"      # 径向
+    - "axial"       # 轴向
+    - "circumferential"  # 周向
+  
+  # 是否使用FFT加速
+  use_fft: true
+
+# ==================== 波纹度分析配置 ====================
+waviness:
+  # 波纹度截止波长 (mm)
+  cutoff_wavelength: 2.5
+  
+  # 是否分离波纹度
+  separate_waviness: true
+
+# ==================== 对称性分析配置 ====================
+symmetry:
+  # 对称性分析阶数列表
+  symmetry_orders:
+    - 2   # 2阶对称（椭圆）
+    - 4   # 4阶对称
+    - 6   # 6阶对称
+    - 8   # 8阶对称
+  
+  # 对称轴查找方法
+  axis_finding_method: "pca"  # pca 或 geometric
+  
+  # 极坐标分辨率（角度步长，度）
+  polar_resolution: 1.0
+
+# ==================== 壁厚分析配置 ====================
+thickness:
+  # 壁厚计算方法
+  method: "normal"  # normal 或 ray_casting
+  
+  # 法向量估计邻域点数
+  normal_neighbors: 20
+  
+  # KD树搜索半径 (mm)
+  search_radius: 5.0
+  
+  # 是否生成彩色云图
+  generate_colormap: true
+
+# ==================== 谐振参数分析配置 ====================
+resonance:
+  # 材料密度 (kg/m³)
+  material_density: 7850.0
+  
+  # 是否计算惯性矩
+  compute_inertia: true
+  
+  # 是否评估谐振频率影响
+  evaluate_frequency: true
+
+# ==================== 质量评价配置 ====================
+quality:
+  # 各指标权重配置
+  weights:
+    roughness: 0.25      # 表面粗糙度权重
+    symmetry: 0.25       # 对称性权重
+    thickness: 0.20      # 壁厚权重
+    waviness: 0.15       # 波纹度权重
+    resonance: 0.15      # 谐振参数权重
+  
+  # 质量等级阈值
+  grade_thresholds:
+    excellent: 90    # 优：>= 90分
+    good: 75         # 良：>= 75分
+    medium: 60       # 中：>= 60分
+    # 差：< 60分
+  
+  # 各指标阈值配置（用于单项评分）
+  thresholds:
+    roughness:
+      ra_excellent: 0.4    # Ra <= 0.4μm 为优
+      ra_good: 0.8         # Ra <= 0.8μm 为良
+      ra_medium: 1.6       # Ra <= 1.6μm 为中
+    
+    symmetry:
+      error_excellent: 0.01   # 对称性误差 <= 1% 为优
+      error_good: 0.02        # 对称性误差 <= 2% 为良
+      error_medium: 0.05      # 对称性误差 <= 5% 为中
+    
+    thickness:
+      uniformity_excellent: 0.02   # 不均匀度 <= 2% 为优
+      uniformity_good: 0.05        # 不均匀度 <= 5% 为良
+      uniformity_medium: 0.10      # 不均匀度 <= 10% 为中
+
+# ==================== 性能配置 ====================
+performance:
+  # 是否启用并行处理
+  enable_parallel: true
+  
+  # 并行进程数（-1表示自动检测）
+  num_processes: -1
+  
+  # 内存限制 (MB)
+  memory_limit: 500
+  
+  # 是否使用向量化计算
+  use_vectorization: true
+
+# ==================== 可视化配置 ====================
+visualization:
+  # 图形DPI
+  dpi: 150
+  
+  # 图形尺寸
+  figure_size: [10, 8]
+  
+  # 色图类型
+  colormap: "jet"
+  
+  # 是否显示网格
+  show_grid: true
+  
+  # 字体大小
+  font_size: 12
+
+# ==================== 输出配置 ====================
+output:
+  # 结果保存格式
+  save_format: "json"  # json, yaml, pickle
+  
+  # 是否保存中间结果
+  save_intermediate: false
+  
+  # 是否生成报告
+  generate_report: true
+  
+  # 报告格式
+  report_format: "pdf"  # pdf, word, html
+
+# ==================== 日志配置 ====================
+logging:
+  # 日志级别
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  
+  # 是否保存日志文件
+  save_to_file: true
+  
+  # 日志文件路径
+  log_file: "output/precision_analysis.log"
+
+# ==================== ASC点云处理配置 ====================
+asc_processing:
+  # 采样率（每N个数据点取1个）
+  sample_rate: 50
+
+  # 平面去除Z阈值 (mm)
+  z_threshold: -0.1
+
+  # 去噪邻近点数
+  denoise_nb_neighbors: 30
+
+  # 去噪标准差比率
+  denoise_std_ratio: 2.0
+
+  # 虚影Z阈值 (mm)
+  ghost_z_threshold: -0.1
+
+  # 装配面Z百分位
+  assembly_z_percentile: 90
+
+  # 半径回退百分位
+  radius_fallback_percentile: 50
+
+  # 是否复用中间文件
+  reuse_intermediate: true
+
+  # 是否保存中间文件
+  save_intermediate: true
