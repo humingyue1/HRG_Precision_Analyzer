@@ -140,4 +140,7 @@ python run_gui_v4.py
 | 导出 Word 失败 | 确认 python-docx>=0.8.11 已安装 |
 | 中文乱码 | 系统需支持中文编码，终端运行 chcp 65001 |
 
-![HRG谐振陀螺上位机演示：VTK点云可视化+质量分析](assets/hrg_demo.gif)
+## Demo
+<img src="assets/hrg_demo.gif" alt="HRG上位机演示：点云导入、3D模型比对、几何参数计算、质量评分输出" width="650"/>
+
+> 演示内容：实测点云与STL振子模型配准，2D剖面偏差可视化，齿状结构参数求解，自动生成综合质量评分。
