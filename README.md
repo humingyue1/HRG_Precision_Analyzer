@@ -50,7 +50,10 @@ HRG_Precision_Analyzer_v4.0/
 
 ## 安装步骤
 
-### 方式一：一键安装 (Anaconda)
+### 方式一：下载exe文件即可
+demo_models中有可用的模拟数据可查看效果
+
+### 方式二：一键安装 (Anaconda)
 
 ```bash
 conda create -n hrg python=3.10
@@ -58,7 +61,7 @@ conda activate hrg
 pip install -r requirements.txt
 ```
 
-### 方式二：pip 直接安装
+### 方式三：pip 直接安装
 
 ```bash
 pip install -r requirements.txt
@@ -76,10 +79,13 @@ pip install vtk
 
 ## 启动方式
 
-### 方式一：双击启动
+### 方式一：下载exe文件
+双击启动
+
+### 方式二：双击启动
 双击 `启动.bat`
 
-### 方式二：命令行启动
+### 方式三：命令行启动
 ```bash
 python run_gui_v4.py
 ```
